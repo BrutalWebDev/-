@@ -1,0 +1,53 @@
+unit RepDat;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, ToolEdit, ExtCtrls;
+
+type
+  TRepData = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    D1: TDateEdit;
+    D2: TDateEdit;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  RepData: TRepData;
+
+implementation
+
+uses DataModule, RepOne;
+
+{$R *.dfm}
+
+procedure TRepData.Button1Click(Sender: TObject);
+begin
+try
+ if (D1.Date <> 0) and (D2.Date <> 0) then begin
+    DM.RepQ.Active:=false;
+    DM.RepQ.SQL.Clear;
+    DM.RepQ.SQL.Add('SELECT * FROM Разрешения,Рыба,Районы WHERE Разрешения.код_рыбы=Рыба.код_рыбы AND Разрешения.код_района=Районы.код_района');
+    DM.RepQ.Active:=true;
+    
+    RepBBTU.QRLabel3.Caption:=datetostr(D2.Date);
+    RepBBTU.QuickRep1.Preview;
+    RepData.Close;
+ end
+ else showmessage('Для формирования отчета, нужно выбрать период.');
+except
+on E : Exception do
+      ShowMessage('Внимание! '+E.Message);
+end;
+end;
+
+end.

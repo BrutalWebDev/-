@@ -1,0 +1,46 @@
+unit RepTwo;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, QuickRpt, QRCtrls, ExtCtrls;
+
+type
+  TMonitoring = class(TForm)
+    QuickRep1: TQuickRep;
+    TitleBand1: TQRBand;
+    QRSubDetail1: TQRSubDetail;
+    QRSubDetail2: TQRSubDetail;
+    QRLabel1: TQRLabel;
+    QRDBText1: TQRDBText;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRDBText2: TQRDBText;
+    QRDBText3: TQRDBText;
+    QRDBText4: TQRDBText;
+    QRDBText5: TQRDBText;
+    QRDBText6: TQRDBText;
+    QRDBText7: TQRDBText;
+    QRStringsBand1: TQRStringsBand;
+    QRLabel7: TQRLabel;
+    QRLabel8: TQRLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Monitoring: TMonitoring;
+
+implementation
+
+uses DataModule;
+
+{$R *.dfm}
+
+end.
